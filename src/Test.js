@@ -8,8 +8,21 @@ export default class Test extends React.Component {
   state = {
     list: ["gello", "hello", "ugu"],
     counter: 1,
-    text: " "
-  };
+    text: " ",
+    name: "pik"
+}
+
+componentDidMount() {
+  fetch("https://pokeapi.co/api/v2/pokemon/1/")
+    .then(response => response.json())
+    .then(json => {
+      this.setState({
+      pokemonName:json.name,
+    
+      })
+    })
+}
+
   handleButtonClick = () => {
     console.log("click");
     this.setState({ counter: this.state.counter + 1 });
